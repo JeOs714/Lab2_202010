@@ -57,6 +57,11 @@ class insertionSortTest (unittest.TestCase):
         if int(element1['book_id']) <  int(element2['book_id']):
             return True
         return False
+    
+    def grater( self, element1, element2):
+        if int(element1['book_id'])  > int(element2['book_id']):
+            return True
+        return False
 
     def verifySorting(self, lista, compFunction):
         iterator = it.newIterator(lista)
