@@ -109,7 +109,14 @@ def main():
                     print("La lista esta vacía")
                 else:   
                     criteria =input('Ingrese el criterio de búsqueda\n')
-                    counter=countElementsFilteredByColumn(criteria, "nombre", lista) #filtrar una columna por criterio  
+
+                    Columna: "Columna que en la cual debería buscar"
+
+                    counter=countElementsFilteredByColumn(criteria, Columna , lista) #filtrar una columna por criterio  
+                    
+                    """Hay que tener en cuenta que no es el columna nombre, ya que usamos otro archivo de pruebas\n 
+                    y en este no se encuentra esta columna""" 
+
                     print("Coinciden ",counter," elementos con el crtierio: ", criteria  )
             elif int(inputs[0])==4: #opcion 4
                 if lista==None or lista['size']==0: #obtener la longitud de la lista
