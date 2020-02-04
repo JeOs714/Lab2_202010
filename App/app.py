@@ -70,7 +70,7 @@ def countElementsFilteredByColumn(criteria, column, lst):
     """
     Retorna cuantos elementos coinciden con un criterio para una columna dada  
     """
-    if lst['size']==0:
+    if len(lst)==0:
         print("La lista esta vacía")  
         return 0
     else:
@@ -85,20 +85,32 @@ def countElementsFilteredByColumn(criteria, column, lst):
         print("Tiempo de ejecución ",t1_stop-t1_start," segundos")
     return counter
 
-def countElementsByCriteria(criteria, column, lst):
-    """
-    Retorna la cantidad de elementos que cumplen con un criterio para una columna dada
-    """
-    return 0
+def countElementsByCriteria(criteria, column, lst, directores):
+    id=[]
+
+    if len(lst)==0:
+        print("La lista esta vacía")  
+        return 0
+    else:
+        t1_start = process_time() #tiempo inicial
+        counter=0
+        for element in directores:
+            if criteria.lower() in element[column].lower(): #filtrar por palabra clave 
+                for elemento in lst:
+                    if element["id"]==elemento['id'] and float(elemento['vote_average'])>=6:
+                        counter+=1
+
+    return counter
 
 def main():
-    lista = None 
+    lista = None
+    directores= []
     while True:
         printMenu() #imprimir el menu de opciones en consola
         inputs =input('Seleccione una opción para continuar\n') #leer opción ingresada
         if len(inputs)>0:
             if int(inputs[0])==1: #opcion 1
-                lista = loadCSVFile("Data/MoviesCastingRaw-small.csv") #llamar funcion cargar datos
+                lista = loadCSVFile("Data/SmallMoviesDetailsCleaned.csv") #llamar funcion cargar datos
                 print("Datos cargados, ",lista['size']," elementos cargados")
             elif int(inputs[0])==2: #opcion 2
                 if lista==None or lista['size']==0: #obtener la longitud de la lista
@@ -110,21 +122,19 @@ def main():
                 else:   
                     criteria =input('Ingrese el criterio de búsqueda\n')
 
-                    Columna: "Columna que en la cual debería buscar"
+                    Columna="original_title"
 
-                    counter=countElementsFilteredByColumn(criteria, Columna , lista) #filtrar una columna por criterio  
+                    counter=countElementsFilteredByColumn(criteria, "original_title" , lista) #filtrar una columna por criterio  
                     
                     """Hay que tener en cuenta que no es el columna nombre, ya que usamos otro archivo de pruebas\n 
                     y en este no se encuentra esta columna""" 
 
                     print("Coinciden ",counter," elementos con el crtierio: ", criteria  )
             elif int(inputs[0])==4: #opcion 4
-                if lista==None or lista['size']==0: #obtener la longitud de la lista
-                    print("La lista esta vacía")
-                else:
-                    criteria =input('Ingrese el criterio de búsqueda\n')
-                    counter=countElementsByCriteria(criteria,0,lista)
-                    print("Coinciden ",counter," elementos con el crtierio: '", criteria ,"' (en construcción ...)")
+                directores= loadCSVFile("Data/MoviesCastingRaw-small.csv") 
+                criteria =input('Ingrese el criterio de búsqueda\n')
+                counter=countElementsByCriteria(criteria,"director_name",lista, directores)
+                print("Coinciden ",counter," elementos con el criterio: '", criteria ,"' (en construcción ...)")
             elif int(inputs[0])==5: #opcion 5
                 if lista==None or lista['size']==0: #obtener la longitud de la lista
                     print("La lista esta vacía")
