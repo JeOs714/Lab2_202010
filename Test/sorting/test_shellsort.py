@@ -53,12 +53,13 @@ class shellSortTest (unittest.TestCase):
     def tearDown (self):
         pass
 
-    def less( self, element1, element2):
-        if int(element1['book_id']) <  int(element2['book_id']):
+     def less( self, element1, element2):
+        if int(element1['vote_count']) <  int(element2['vote_count']):
             return True
         return False
-    def grater( self, element1, element2):
-        if int(element1['book_id'])  > int(element2['book_id']):
+    
+    def greater( self, element1, element2):
+        if int(element1['vote_average'])  > int(element2['vote_average']):
             return True
         return False
 

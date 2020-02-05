@@ -36,7 +36,7 @@ class insertionSortTest (unittest.TestCase):
 
     def setUp (self):
 
-        self.lst = slt.newList(apl.loadCSVFile("Data/SmallMoviesDetailsClened.csv"))
+        self.lst=slt.newList(apl.loadCSVFile("Data/SmallMoviesDetailsClened.csv"))
 
     def tearDown (self):
         pass
@@ -47,7 +47,7 @@ class insertionSortTest (unittest.TestCase):
         return False
     
     def greater( self, element1, element2):
-        if int(element1['book_id'])  > int(element2['book_id']):
+        if int(element1['vote_average'])  > int(element2['vote_average']):
             return True
         return False
 

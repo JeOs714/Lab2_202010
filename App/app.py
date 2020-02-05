@@ -32,6 +32,9 @@ import csv
 from ADT import list as lt
 from DataStructures import listiterator as it
 from DataStructures import liststructure as lt
+from Sorting import insertionsort as sort1
+from Sorting import selectionsort as sort2
+from Sorting import shellsort as sort3
 
 from time import process_time 
 
@@ -64,6 +67,7 @@ def printMenu():
     print("2- Contar los elementos de la Lista")
     print("3- Contar elementos filtrados por palabra clave")
     print("4- Consultar elementos a partir de dos listas")
+    print("5- Organizar la información")
     print("0- Salir")
 
 def countElementsFilteredByColumn(criteria, column, lst):
@@ -99,8 +103,26 @@ def countElementsByCriteria(criteria, column, lst, directores):
                 for elemento in lst:
                     if element["id"]==elemento['id'] and float(elemento['vote_average'])>=6:
                         counter+=1
+        t1_stop = process_time() #tiempo final
+        print("Tiempo de ejecución ",t1_stop-t1_start," segundos")
 
     return counter
+
+def less( element1, element2):
+    t1_start = process_time() #tiempo inicial
+    if int(element1['vote_count']) <  int(element2['vote_count']):
+        return True
+    t1_stop = process_time() #tiempo final
+    print("Tiempo de ejecución ",t1_stop-t1_start," segundos")
+    return False
+    
+def greater( self, element1, element2):
+    t1_start = process_time() #tiempo inicial
+    if int(element1['vote_average'])  > int(element2['vote_average']):
+        return True
+    t1_stop = process_time() #tiempo final
+    print("Tiempo de ejecución ",t1_stop-t1_start," segundos")
+    return False
 
 def main():
     lista = None
@@ -142,9 +164,22 @@ def main():
                 if lista==None or lista['size']==0: #obtener la longitud de la lista
                     print("La lista esta vacía")
                 else:
-                    criteria =input('Ingrese el criterio de búsqueda\n')
-                    counter=countElementsByCriteria(criteria,0,lista, directores)
-                    print("Coinciden ",counter," elementos con el crtierio: '", criteria ,"' (en construcción ...)")
+                    print("Seleccione el tipo de algoritmo según como desee organizar su información")
+                    print("51- SelectionSort")
+                    print("52- InsertionSort")
+                    print("53- ShellSort")
+                    centi=True
+                    while centi:
+                        opcion= int(input('Seleccione una opción para continuar'))
+                        if len(inputs)>0:
+                            if opcion==51: #opcion 1  
+                                sort1.insertionSort(lista,less) 
+                            elif opcion==52: #opcion 2  
+                                sort2.selectionSort(lista,less) 
+                            elif opcion==53: #opcion 3
+                                sort3.shellSort(lista,less) 
+                            else:
+                                centi=False
             elif int(inputs[0])==0: #opcion 0, salir
                 sys.exit(0)
                 
