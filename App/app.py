@@ -109,11 +109,10 @@ def countElementsByCriteria(criteria, column, lst, directores):
     return counter
 
 def less( element1, element2):
-    t1_start = process_time() #tiempo inicial
+    
     if int(element1['vote_count']) <  int(element2['vote_count']):
         return True
-    t1_stop = process_time() #tiempo final
-    print("Tiempo de ejecución ",t1_stop-t1_start," segundos")
+    
     return False
     
 def greater( self, element1, element2):
@@ -172,12 +171,21 @@ def main():
                     while centi:
                         opcion= int(input('Seleccione una opción para continuar'))
                         if len(inputs)>0:
-                            if opcion==51: #opcion 1  
+                            if opcion==51: #opcion 1
+                                t1_start = process_time() #tiempo inicial
                                 sort1.insertionSort(lista,less) 
+                                t1_stop = process_time() #tiempo final
+                                print("Tiempo de ejecución ",t1_stop-t1_start," segundos")
                             elif opcion==52: #opcion 2  
-                                sort2.selectionSort(lista,less) 
+                                t1_start = process_time() #tiempo inicial
+                                sort2.selectionSort(lista,less)
+                                t1_stop = process_time() #tiempo final
+                                print("Tiempo de ejecución ",t1_stop-t1_start," segundos")
                             elif opcion==53: #opcion 3
-                                sort3.shellSort(lista,less) 
+                                t1_start = process_time() #tiempo inicial
+                                sort3.shellSort(lista,less)
+                                t1_stop = process_time() #tiempo final
+                                print("Tiempo de ejecución ",t1_stop-t1_start," segundos")
                             else:
                                 centi=False
             elif int(inputs[0])==0: #opcion 0, salir

@@ -53,7 +53,7 @@ class shellSortTest (unittest.TestCase):
     def tearDown (self):
         pass
 
-     def less( self, element1, element2):
+    def less( self, element1, element2):
         if int(element1['vote_count']) <  int(element2['vote_count']):
             return True
         return False
