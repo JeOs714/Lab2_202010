@@ -36,7 +36,11 @@ class insertionSortTest (unittest.TestCase):
 
     def setUp (self):
 
-        self.lst=slt.newList(apl.loadCSVFile("Data/SmallMoviesDetailsClened.csv"))
+        fileDir = os.path.dirname(os.path.abspath(__file__))
+        parentDir=os.path.dirname(fileDir)
+        parentDir2=os.path.dirname(parentDir)
+        parentDir2+="Data/SmallMoviesDetailsClened.csv"
+        self.lst=slt.newList(apl.loadCSVFile(parentDir2))
 
     def tearDown (self):
         pass
@@ -70,17 +74,7 @@ class insertionSortTest (unittest.TestCase):
         """
          Lista con elementos en orden aleatorio
         """
-        self.lst = slt.newList(self.list_type)
-        slt.addFirst (self.lst, self.book5)
-        slt.addFirst (self.lst, self.book6)
-        slt.addFirst (self.lst, self.book3)
-        slt.addFirst (self.lst, self.book10)
-        slt.addFirst (self.lst, self.book1)
-        slt.addFirst (self.lst, self.book2)
-        slt.addFirst (self.lst, self.book8)
-        slt.addFirst (self.lst, self.book4)
-        slt.addFirst (self.lst, self.book7)
-        slt.addFirst (self.lst, self.book9)
+
      
         print ("Random list:----------------------------------------------------")
         iterator = it.newIterator(self.lst)
@@ -97,17 +91,7 @@ class insertionSortTest (unittest.TestCase):
         """
         Lista ordenada inversamente
         """
-        self.lst = slt.newList(self.list_type)
-        slt.addFirst (self.lst, self.book1)
-        slt.addFirst (self.lst, self.book2)
-        slt.addFirst (self.lst, self.book3)
-        slt.addFirst (self.lst, self.book4)
-        slt.addFirst (self.lst, self.book5)
-        slt.addFirst (self.lst, self.book6)
-        slt.addFirst (self.lst, self.book7)
-        slt.addFirst (self.lst, self.book8)
-        slt.addFirst (self.lst, self.book9)
-        slt.addFirst (self.lst, self.book10)
+
 
         print ("Inverted list:----------------------------------------------------")
         iterator = it.newIterator(self.lst)
@@ -125,18 +109,6 @@ class insertionSortTest (unittest.TestCase):
         """
         Lista ordenada
         """
-        self.lst = slt.newList(self.list_type)
-        slt.addFirst (self.lst, self.book10)
-        slt.addFirst (self.lst, self.book9)
-        slt.addFirst (self.lst, self.book8)
-        slt.addFirst (self.lst, self.book7)
-        slt.addFirst (self.lst, self.book6)
-        slt.addFirst (self.lst, self.book5)
-        slt.addFirst (self.lst, self.book4)
-        slt.addFirst (self.lst, self.book3)
-        slt.addFirst (self.lst, self.book2)
-        slt.addFirst (self.lst, self.book1)
-
         print ("ordered list:----------------------------------------------------")
         iterator = it.newIterator(self.lst)
         while  it.hasNext(iterator):
@@ -151,8 +123,6 @@ class insertionSortTest (unittest.TestCase):
         """
         Un elemento
         """
-        self.lst = slt.newList(self.list_type)
-        slt.addFirst (self.lst, self.book1)
 
         print ("one element:----------------------------------------------------")
         iterator = it.newIterator(self.lst)
@@ -171,21 +141,7 @@ class insertionSortTest (unittest.TestCase):
         """
            Con muchos elementos en la lista
         """
-        self.lst = slt.newList(self.list_type)
-        slt.addFirst (self.lst, self.book5)
-        slt.addFirst (self.lst, self.book6)
-        slt.addFirst (self.lst, self.book14)
-        slt.addFirst (self.lst, self.book3)
-        slt.addFirst (self.lst, self.book13)
-        slt.addFirst (self.lst, self.book10)
-        slt.addFirst (self.lst, self.book1)
-        slt.addFirst (self.lst, self.book12)
-        slt.addFirst (self.lst, self.book2)
-        slt.addFirst (self.lst, self.book8)
-        slt.addFirst (self.lst, self.book4)
-        slt.addFirst (self.lst, self.book11)
-        slt.addFirst (self.lst, self.book7)
-        slt.addFirst (self.lst, self.book9)
+
 
         print ("Repeated elements:----------------------------------------------------")
         iterator = it.newIterator(self.lst)
