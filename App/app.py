@@ -131,16 +131,19 @@ def main():
 
                     print("Coinciden ",counter," elementos con el crtierio: ", criteria  )
             elif int(inputs[0])==4: #opcion 4
-                directores= loadCSVFile("Data/MoviesCastingRaw-small.csv") 
-                criteria =input('Ingrese el criterio de búsqueda\n')
-                counter=countElementsByCriteria(criteria,"director_name",lista, directores)
-                print("Coinciden ",counter," elementos con el criterio: '", criteria ,"' (en construcción ...)")
+                if lista==None or lista['size']==0: #obtener la longitud de la lista
+                    print("La lista esta vacía")
+                else:
+                    directores= loadCSVFile("Data/MoviesCastingRaw-small.csv") 
+                    criteria =input('Ingrese el criterio de búsqueda\n')
+                    counter=countElementsByCriteria(criteria,0,lista, directores)
+                    print("Coinciden ",counter," elementos con el criterio: '", criteria ,"' (en construcción ...)")
             elif int(inputs[0])==5: #opcion 5
                 if lista==None or lista['size']==0: #obtener la longitud de la lista
                     print("La lista esta vacía")
                 else:
                     criteria =input('Ingrese el criterio de búsqueda\n')
-                    counter=countElementsByCriteria(criteria,0,lista)
+                    counter=countElementsByCriteria(criteria,0,lista, directores)
                     print("Coinciden ",counter," elementos con el crtierio: '", criteria ,"' (en construcción ...)")
             elif int(inputs[0])==0: #opcion 0, salir
                 sys.exit(0)
