@@ -24,49 +24,46 @@ import unittest
 import config 
 from DataStructures import listiterator as it
 from DataStructures import liststructure as lt
+from App import app as apl
 
 
 class insertionSortTest (unittest.TestCase):
 
     def setUp (self):
-        self.book1 = {'book_id':'1', 'book_title':'Title 1', 'author':'author 1'}
-        self.book2 = {'book_id':'2', 'book_title':'Title 2', 'author':'author 2'}
-        self.book3 = {'book_id':'3', 'book_title':'Title 3', 'author':'author 3'}
-        self.book4 = {'book_id':'4', 'book_title':'Title 4', 'author':'author 4'}
-        self.book5 = {'book_id':'5', 'book_title':'Title 5', 'author':'author 5'}
-        self.book6 = {'book_id':'6', 'book_title':'Title 6', 'author':'author 1'}
-        self.book7 = {'book_id':'7', 'book_title':'Title 7', 'author':'author 2'}
-        self.book8 = {'book_id':'8', 'book_title':'Title 8', 'author':'author 3'}
-        self.book9 = {'book_id':'9', 'book_title':'Title 9', 'author':'author 4'}
-        self.book10 = {'book_id':'10', 'book_title':'Title 10', 'author':'author 5'}
+        
+        self.movie1 = {'movie_id':'2', 'original_title':'Ariel', 'vote_count':'40', 'vote_average':'7.1'}
+        self.movie2 = {'movie_id':'3', 'original_title':'Varjoja paratiisissa', 'vote_count':'32','vote_average':'7.0'}
+        self.movie3 = {'movie_id':'5', 'original_title':'Four Rooms', 'vote_count':'485', 'vote_average':'6.5'}
+        self.movie4 = {'movie_id':'6', 'original_title':'Judgment Night', 'vote_count':'69', 'vote_average':'6.5'}
+        self.movie5 = {'movie_id':'8', 'original_title':'Life in Loops (A Megacities RMX)', 'vote_count':'4', 'vote_average':'6.4'}
+        self.movie6 = {'movie_id':'9', 'original_title':'Sonntag im August', 'vote_count':'2', 'vote_average':'5.3'}
 
     def tearDown (self):
         pass
-
 
     def test_arrayAddFirst (self):
         """
          Lista con elementos en orden aleatorio
         """
         self.lst = lt.newList('ARRAY_LIST')
-        lt.addFirst (self.lst, self.book1)
+        lt.addFirst (self.lst, self.movie1)
         self.assertEqual (lt.size(self.lst), 1)
-        lt.addFirst (self.lst, self.book2)
+        lt.addFirst (self.lst, self.movie2)
         self.assertEqual (lt.size(self.lst), 2)
         book = lt.firstElement(self.lst)
-        self.assertDictEqual (book, self.book2)
+        self.assertDictEqual (book, self.movie2)
 
     def test_listAddFirst (self):
         """
          Lista con elementos en orden aleatorio
         """
         self.lst = lt.newList()
-        lt.addFirst (self.lst, self.book1)
+        lt.addFirst (self.lst, self.movie1)
         self.assertEqual (lt.size(self.lst), 1)
-        lt.addFirst (self.lst, self.book2)
+        lt.addFirst (self.lst, self.movie2)
         self.assertEqual (lt.size(self.lst), 2)
         book = lt.firstElement(self.lst)
-        self.assertDictEqual (book, self.book2)
+        self.assertDictEqual (book, self.movie2)
 
 
 if __name__ == "__main__":

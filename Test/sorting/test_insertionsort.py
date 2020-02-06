@@ -19,14 +19,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  """
 
-
 import unittest 
 import config 
 from Sorting import insertionsort as sort
 from DataStructures import listiterator as it
 from ADT import list as slt
 import copy 
-from App import app as apl
+
 
 
 class insertionSortTest (unittest.TestCase):
@@ -35,12 +34,14 @@ class insertionSortTest (unittest.TestCase):
     list_type = 'SINGLE_LINKED_LIST'
 
     def setUp (self):
+        
+        self.movie1 = {'movie_id':'2', 'original_title':'Ariel', 'vote_count':'40', 'vote_average':'7.1'}
+        self.movie2 = {'movie_id':'3', 'original_title':'Varjoja paratiisissa', 'vote_count':'32','vote_average':'7.0'}
+        self.movie3 = {'movie_id':'5', 'original_title':'Four Rooms', 'vote_count':'485', 'vote_average':'6.5'}
+        self.movie4 = {'movie_id':'6', 'original_title':'Judgment Night', 'vote_count':'69', 'vote_average':'6.5'}
+        self.movie5 = {'movie_id':'8', 'original_title':'Life in Loops (A Megacities RMX)', 'vote_count':'4', 'vote_average':'6.4'}
+        self.movie6 = {'movie_id':'9', 'original_title':'Sonntag im August', 'vote_count':'2', 'vote_average':'5.3'}
 
-        fileDir = os.path.dirname(os.path.abspath(__file__))
-        parentDir=os.path.dirname(fileDir)
-        parentDir2=os.path.dirname(parentDir)
-        parentDir2+="Data/SmallMoviesDetailsClened.csv"
-        self.lst=slt.newList(apl.loadCSVFile(parentDir2))
 
     def tearDown (self):
         pass
@@ -74,8 +75,14 @@ class insertionSortTest (unittest.TestCase):
         """
          Lista con elementos en orden aleatorio
         """
+        self.lst = slt.newList(self.list_type)
+        slt.addFirst (self.lst, self.movie5)
+        slt.addFirst (self.lst, self.movie6)
+        slt.addFirst (self.lst, self.movie3)
+        slt.addFirst (self.lst, self.movie4)
+        slt.addFirst (self.lst, self.movie1)
+        slt.addFirst (self.lst, self.movie2)
 
-     
         print ("Random list:----------------------------------------------------")
         iterator = it.newIterator(self.lst)
         while  it.hasNext(iterator):
@@ -91,7 +98,13 @@ class insertionSortTest (unittest.TestCase):
         """
         Lista ordenada inversamente
         """
-
+        self.lst = slt.newList(self.list_type)
+        slt.addFirst (self.lst, self.movie1)
+        slt.addFirst (self.lst, self.movie2)
+        slt.addFirst (self.lst, self.movie3)
+        slt.addFirst (self.lst, self.movie4)
+        slt.addFirst (self.lst, self.movie5)
+        slt.addFirst (self.lst, self.movie6)
 
         print ("Inverted list:----------------------------------------------------")
         iterator = it.newIterator(self.lst)
@@ -109,6 +122,14 @@ class insertionSortTest (unittest.TestCase):
         """
         Lista ordenada
         """
+        self.lst = slt.newList(self.list_type)
+        slt.addFirst (self.lst, self.movie6)
+        slt.addFirst (self.lst, self.movie5)
+        slt.addFirst (self.lst, self.movie4)
+        slt.addFirst (self.lst, self.movie3)
+        slt.addFirst (self.lst, self.movie2)
+        slt.addFirst (self.lst, self.movie1)
+
         print ("ordered list:----------------------------------------------------")
         iterator = it.newIterator(self.lst)
         while  it.hasNext(iterator):
@@ -123,6 +144,8 @@ class insertionSortTest (unittest.TestCase):
         """
         Un elemento
         """
+        self.lst = slt.newList(self.list_type)
+        slt.addFirst (self.lst, self.movie1)
 
         print ("one element:----------------------------------------------------")
         iterator = it.newIterator(self.lst)
@@ -141,7 +164,17 @@ class insertionSortTest (unittest.TestCase):
         """
            Con muchos elementos en la lista
         """
-
+        self.lst = slt.newList(self.list_type)
+        slt.addFirst (self.lst, self.movie5)
+        slt.addFirst (self.lst, self.movie6)
+        slt.addFirst (self.lst, self.movie5)
+        slt.addFirst (self.lst, self.movie3)
+        slt.addFirst (self.lst, self.movie3)
+        slt.addFirst (self.lst, self.movie3)
+        slt.addFirst (self.lst, self.movie1)
+        slt.addFirst (self.lst, self.movie2)
+        slt.addFirst (self.lst, self.movie2)
+        slt.addFirst (self.lst, self.movie4)
 
         print ("Repeated elements:----------------------------------------------------")
         iterator = it.newIterator(self.lst)
@@ -152,8 +185,6 @@ class insertionSortTest (unittest.TestCase):
         print ("sorting ....")
         sort.insertionSort (self.lst, self.less)
         self.assertTrue(self.verifySorting(self.lst, self.less))
-
-
 
 
 if __name__ == "__main__":

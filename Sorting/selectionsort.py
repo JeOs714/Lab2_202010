@@ -26,6 +26,7 @@ from DataStructures import listnode as node
 def selectionSort (lst, compFunction): 
     size = lst['size']
     pos1 = 1
+    i=0
     while pos1 < size:
         minimum = pos1              # minimun tiene el menor elemento conocido hasta ese momento
         pos2 = pos1 + 1
@@ -35,3 +36,6 @@ def selectionSort (lst, compFunction):
             pos2 += 1
         lt.exchange (lst, pos1, minimum)  # se intercambia el elemento más pequeño hasta ese punto con el elemento en pos1
         pos1 += 1
+        i+=1
+        print (str(i))
+    print ("termina")

@@ -43,8 +43,8 @@ def loadCSVFile (file, sep=";"):
     """
     Carga un archivo csv a una lista
     """
-    #lst = lt.newList("ARRAY_LIST") #Usando implementacion arraylist
-    lst = lt.newList() #Usando implementacion linkedlist
+    lst = lt.newList("ARRAY_LIST") #Usando implementacion arraylist
+    #lst = lt.newList() #Usando implementacion linkedlist
     print("Cargando archivo ....")
     t1_start = process_time() #tiempo inicial
     dialect = csv.excel()
@@ -131,7 +131,7 @@ def main():
         inputs =input('Seleccione una opción para continuar\n') #leer opción ingresada
         if len(inputs)>0:
             if int(inputs[0])==1: #opcion 1
-                lista = loadCSVFile("Data/SmallMoviesDetailsCleaned.csv") #llamar funcion cargar datos
+                lista = loadCSVFile("Data/AllMoviesDetailsCleaned.csv") #llamar funcion cargar datos
                 print("Datos cargados, ",lista['size']," elementos cargados")
             elif int(inputs[0])==2: #opcion 2
                 if lista==None or lista['size']==0: #obtener la longitud de la lista
@@ -142,14 +142,7 @@ def main():
                     print("La lista esta vacía")
                 else:   
                     criteria =input('Ingrese el criterio de búsqueda\n')
-
-                    Columna="original_title"
-
                     counter=countElementsFilteredByColumn(criteria, "original_title" , lista) #filtrar una columna por criterio  
-                    
-                    """Hay que tener en cuenta que no es el columna nombre, ya que usamos otro archivo de pruebas\n 
-                    y en este no se encuentra esta columna""" 
-
                     print("Coinciden ",counter," elementos con el crtierio: ", criteria  )
             elif int(inputs[0])==4: #opcion 4
                 if lista==None or lista['size']==0: #obtener la longitud de la lista
@@ -157,15 +150,15 @@ def main():
                 else:
                     directores= loadCSVFile("Data/MoviesCastingRaw-small.csv") 
                     criteria =input('Ingrese el criterio de búsqueda\n')
-                    counter=countElementsByCriteria(criteria,0,lista, directores)
+                    counter=countElementsByCriteria(criteria,lista, directores)
                     print("Coinciden ",counter," elementos con el criterio: '", criteria ,"' (en construcción ...)")
             elif int(inputs[0])==5: #opcion 5
                 if lista==None or lista['size']==0: #obtener la longitud de la lista
                     print("La lista esta vacía")
                 else:
                     print("Seleccione el tipo de algoritmo según como desee organizar su información")
-                    print("51- SelectionSort")
-                    print("52- InsertionSort")
+                    print("51- InsertionSort")
+                    print("52- SelectionSort")
                     print("53- ShellSort")
                     centi=True
                     while centi:

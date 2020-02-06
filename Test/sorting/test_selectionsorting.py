@@ -29,35 +29,29 @@ import copy
 
 
 
+
 class selectionSortTest (unittest.TestCase):
 
     #list_type = 'ARRAY_LIST'
     list_type = 'SINGLE_LINKED_LIST'
 
     def setUp (self):
-        self.book1 = {'book_id':'1', 'book_title':'Title 1', 'author':'author 1'}
-        self.book2 = {'book_id':'2', 'book_title':'Title 2', 'author':'author 2'}
-        self.book3 = {'book_id':'3', 'book_title':'Title 3', 'author':'author 3'}
-        self.book4 = {'book_id':'4', 'book_title':'Title 4', 'author':'author 4'}
-        self.book5 = {'book_id':'5', 'book_title':'Title 5', 'author':'author 5'}
-        self.book6 = {'book_id':'6', 'book_title':'Title 6', 'author':'author 6'}
-        self.book7 = {'book_id':'7', 'book_title':'Title 7', 'author':'author 7'}
-        self.book8 = {'book_id':'8', 'book_title':'Title 8', 'author':'author 8'}
-        self.book9 = {'book_id':'9', 'book_title':'Title 9', 'author':'author 9'}
-        self.book10 = {'book_id':'10', 'book_title':'Title 10', 'author':'author 10'}
-        self.book11 = {'book_id':'7', 'book_title':'Title 11', 'author':'author 11'}
-        self.book12 = {'book_id':'8', 'book_title':'Title 12', 'author':'author 12'}
-        self.book13 = {'book_id':'9', 'book_title':'Title 13', 'author':'author 13'}
-        self.book14 = {'book_id':'10', 'book_title':'Title 14', 'author':'author 14'}
+        
+        self.movie1 = {'movie_id':'2', 'original_title':'Ariel', 'vote_count':'40', 'vote_average':'7.1'}
+        self.movie2 = {'movie_id':'3', 'original_title':'Varjoja paratiisissa', 'vote_count':'32','vote_average':'7.0'}
+        self.movie3 = {'movie_id':'5', 'original_title':'Four Rooms', 'vote_count':'485', 'vote_average':'6.5'}
+        self.movie4 = {'movie_id':'6', 'original_title':'Judgment Night', 'vote_count':'69', 'vote_average':'6.5'}
+        self.movie5 = {'movie_id':'8', 'original_title':'Life in Loops (A Megacities RMX)', 'vote_count':'4', 'vote_average':'6.4'}
+        self.movie6 = {'movie_id':'9', 'original_title':'Sonntag im August', 'vote_count':'2', 'vote_average':'5.3'}
 
     def tearDown (self):
         pass
 
     def less( self, element1, element2):
-        if int(element1["book_id"]) <  int(element2['book_id']):
+        if int(element1['vote_count']) <  int(element2['vote_count']):
             return True
         return False
-    
+
     def greater( self, element1, element2):
         if int(element1['vote_average'])  > int(element2['vote_average']):
             return True
@@ -83,17 +77,13 @@ class selectionSortTest (unittest.TestCase):
          Lista con elementos en orden aleatorio
         """
         self.lst = slt.newList(self.list_type)
-        slt.addFirst (self.lst, self.book5)
-        slt.addFirst (self.lst, self.book6)
-        slt.addFirst (self.lst, self.book3)
-        slt.addFirst (self.lst, self.book10)
-        slt.addFirst (self.lst, self.book1)
-        slt.addFirst (self.lst, self.book2)
-        slt.addFirst (self.lst, self.book8)
-        slt.addFirst (self.lst, self.book4)
-        slt.addFirst (self.lst, self.book7)
-        slt.addFirst (self.lst, self.book9)
-     
+        slt.addFirst (self.lst, self.movie5)
+        slt.addFirst (self.lst, self.movie6)
+        slt.addFirst (self.lst, self.movie3)
+        slt.addFirst (self.lst, self.movie4)
+        slt.addFirst (self.lst, self.movie1)
+        slt.addFirst (self.lst, self.movie2)
+    
         print ("Random list:----------------------------------------------------")
         iterator = it.newIterator(self.lst)
         while  it.hasNext(iterator):
@@ -110,17 +100,13 @@ class selectionSortTest (unittest.TestCase):
         Lista ordenada inversamente
         """
         self.lst = slt.newList(self.list_type)
-        slt.addFirst (self.lst, self.book1)
-        slt.addFirst (self.lst, self.book2)
-        slt.addFirst (self.lst, self.book3)
-        slt.addFirst (self.lst, self.book4)
-        slt.addFirst (self.lst, self.book5)
-        slt.addFirst (self.lst, self.book6)
-        slt.addFirst (self.lst, self.book7)
-        slt.addFirst (self.lst, self.book8)
-        slt.addFirst (self.lst, self.book9)
-        slt.addFirst (self.lst, self.book10)
-
+        slt.addFirst (self.lst, self.movie1)
+        slt.addFirst (self.lst, self.movie2)
+        slt.addFirst (self.lst, self.movie3)
+        slt.addFirst (self.lst, self.movie4)
+        slt.addFirst (self.lst, self.movie5)
+        slt.addFirst (self.lst, self.movie6)
+       
         print ("Inverted list:----------------------------------------------------")
         iterator = it.newIterator(self.lst)
         count=0
@@ -138,16 +124,12 @@ class selectionSortTest (unittest.TestCase):
         Lista ordenada
         """
         self.lst = slt.newList(self.list_type)
-        slt.addFirst (self.lst, self.book10)
-        slt.addFirst (self.lst, self.book9)
-        slt.addFirst (self.lst, self.book8)
-        slt.addFirst (self.lst, self.book7)
-        slt.addFirst (self.lst, self.book6)
-        slt.addFirst (self.lst, self.book5)
-        slt.addFirst (self.lst, self.book4)
-        slt.addFirst (self.lst, self.book3)
-        slt.addFirst (self.lst, self.book2)
-        slt.addFirst (self.lst, self.book1)
+        slt.addFirst (self.lst, self.movie6)
+        slt.addFirst (self.lst, self.movie5)
+        slt.addFirst (self.lst, self.movie4)
+        slt.addFirst (self.lst, self.movie3)
+        slt.addFirst (self.lst, self.movie2)
+        slt.addFirst (self.lst, self.movie1)
 
         print ("ordered list:----------------------------------------------------")
         iterator = it.newIterator(self.lst)
@@ -164,7 +146,7 @@ class selectionSortTest (unittest.TestCase):
         Un elemento
         """
         self.lst = slt.newList(self.list_type)
-        slt.addFirst (self.lst, self.book1)
+        slt.addFirst (self.lst, self.movie1)
 
         print ("one element:----------------------------------------------------")
         iterator = it.newIterator(self.lst)
@@ -184,20 +166,17 @@ class selectionSortTest (unittest.TestCase):
            Con muchos elementos en la lista
         """
         self.lst = slt.newList(self.list_type)
-        slt.addFirst (self.lst, self.book5)
-        slt.addFirst (self.lst, self.book6)
-        slt.addFirst (self.lst, self.book14)
-        slt.addFirst (self.lst, self.book3)
-        slt.addFirst (self.lst, self.book13)
-        slt.addFirst (self.lst, self.book10)
-        slt.addFirst (self.lst, self.book1)
-        slt.addFirst (self.lst, self.book12)
-        slt.addFirst (self.lst, self.book2)
-        slt.addFirst (self.lst, self.book8)
-        slt.addFirst (self.lst, self.book4)
-        slt.addFirst (self.lst, self.book11)
-        slt.addFirst (self.lst, self.book7)
-        slt.addFirst (self.lst, self.book9)
+        slt.addFirst (self.lst, self.movie5)
+        slt.addFirst (self.lst, self.movie6)
+        slt.addFirst (self.lst, self.movie5)
+        slt.addFirst (self.lst, self.movie3)
+        slt.addFirst (self.lst, self.movie3)
+        slt.addFirst (self.lst, self.movie3)
+        slt.addFirst (self.lst, self.movie1)
+        slt.addFirst (self.lst, self.movie2)
+        slt.addFirst (self.lst, self.movie2)
+        slt.addFirst (self.lst, self.movie4)
+     
 
         print ("Repeated elements:----------------------------------------------------")
         iterator = it.newIterator(self.lst)
