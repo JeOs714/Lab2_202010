@@ -115,7 +115,7 @@ def less( element1, element2):
     
     return False
     
-def greater( self, element1, element2):
+def greater(element1, element2):
     t1_start = process_time() #tiempo inicial
     if int(element1['vote_average'])  > int(element2['vote_average']):
         return True
